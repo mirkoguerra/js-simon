@@ -6,12 +6,29 @@ $(document).ready(function(){
   return Math.floor(Math.random() * (max - min + 1) ) + min;
   }
 
-  // funzione che inserirà nell'array playerNumbers i numeri che vengono inseriti dal giocatore
-  function playerNumberspush() {
+  function playerNumbersPush() {
+
+    // ciclo che inserirà nell'array playerNumbers i numeri che vengono inseriti dal giocatore
     for (var i=0; i<5; i++) {
       playerNumbers.push(parseInt(prompt()));
     }
-  return playerNumbers;
+
+    // ciclo che confronta e inserisce gli elementi matchati nell'array
+    for (var i=0; i<5; i++) {
+      if (askedNumbers[i] == playerNumbers[i]) {
+        matchedNumbers.push(playerNumbers[i]);
+      }
+    }
+
+    // variabile che darà il risultato
+    var risultato = document.getElementById("risultato");
+
+    // gestione dell'output
+    if (matchedNumbers.length==0){
+      risultato.innerHTML = ("Non hai ricordato nessun numero");
+    } else {
+      risultato.innerHTML = ("Ti sei ricordato " + matchedNumbers.length + " numeri nell'ordine corretto, ossia " + matchedNumbers);
+    }
   }
 
   // inizializzo l'array che conterrà i 5 numeri casuali, l'array che sarà composto dai numeri che il giocatore inserirà e quello di confronto
@@ -26,17 +43,6 @@ $(document).ready(function(){
   }
 
   // ritardo l'esecuzione della funzione che inserirà nell'array playerNumbers i numeri che vengono inseriti dal giocatore
-  setTimeout(playerNumberspush, 3000);
-
-  console.log("asked", askedNumbers);
-  console.log("player", playerNumbers);
-
-  document.getElementById("verifica").addEventListener("click", function(){
-    if (askedNumbers[1]==playerNumbers[1]) {
-      matchedNumbers.push();
-    }
-
-    console.log(matchedNumbers);
-  });
+  setTimeout(playerNumbersPush, 3000);
 
 });
