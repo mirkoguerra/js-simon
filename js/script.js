@@ -14,9 +14,10 @@ $(document).ready(function(){
   return playerNumbers;
   }
 
-  // inizializzo l'array che conterrà i 5 numeri casuali e l'array che sarà composto dai numeri che il giocatore inserirà
+  // inizializzo l'array che conterrà i 5 numeri casuali, l'array che sarà composto dai numeri che il giocatore inserirà e quello di confronto
   var askedNumbers = new Array();
   var playerNumbers = new Array();
+  var matchedNumbers = new Array();
 
   // uso un ciclo for per riempire l'array e per far visualizzare i numeri negli alert
   for (var i=0; i<5; i++) {
@@ -29,5 +30,13 @@ $(document).ready(function(){
 
   console.log("asked", askedNumbers);
   console.log("player", playerNumbers);
+
+  document.getElementById("verifica").addEventListener("click", function(){
+    if (askedNumbers[1]==playerNumbers[1]) {
+      matchedNumbers.push();
+    }
+
+    console.log(matchedNumbers);
+  });
 
 });
